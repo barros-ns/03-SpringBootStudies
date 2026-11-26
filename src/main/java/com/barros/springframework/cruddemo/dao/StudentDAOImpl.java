@@ -21,7 +21,6 @@ public class StudentDAOImpl implements StudentDAO{
         this.entityManager = entityManager;
     }
 
-
     //implement save method
     @Override
     @Transactional
@@ -51,6 +50,12 @@ public class StudentDAOImpl implements StudentDAO{
 
         //Retrieve names
         return theQuery.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void update(Student student) {
+        entityManager.merge(student);
     }
 
 }
