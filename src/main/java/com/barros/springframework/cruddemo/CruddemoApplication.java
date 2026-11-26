@@ -18,8 +18,33 @@ public class CruddemoApplication {
     public CommandLineRunner commnandLineRunner (StudentDAO studentDAO){
         return runner ->{
             //createStudent(studentDAO);
-            createMultipleStudents(studentDAO);
+            //createMultipleStudents(studentDAO);
+            readStudent(studentDAO);
         };
+    }
+
+
+    private void readStudent(StudentDAO studentDAO) {
+        //Create Student
+        System.out.println("Creating new Student Object ...");
+        Student tempStudent = new Student("John", "cabral", "teste4@gmail.com");
+
+        //Save the student
+        System.out.println("Saving student ...");
+        studentDAO.save(tempStudent);
+
+        //Display the ID of the saved Student
+        int theId = tempStudent.getId();
+        System.out.println("Saved student student. Generated ID: " + theId);
+
+        //Retrieve student based on the ID
+        System.out.println("Retrieving student with id: " + theId);
+        Student findStudent = studentDAO.findById(theId);
+
+        //Display Student
+        System.out.println("Found Student: " + findStudent);
+
+
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
