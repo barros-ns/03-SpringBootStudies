@@ -34,3 +34,4 @@ build/
 
 ### Maven ###
 .test/
+src/main/resources/application.properties
